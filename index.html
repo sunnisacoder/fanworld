@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./allReset.css">
+    <title>sunnisacoder</title>
+</head>
+
+<body>
+    <div id="header">
+        <div class="logoBox">
+            <a id="logo">FAN</a>
+        </div>
+        <div class="leftHeader">
+            <div class="quoteBox">
+                <p>the reason why I can do better than other is <span class="typed-text"></span><span
+                        class="cursor">&nbsp;</span></p>
+                <!-- <p>GREW TO LOVE GENERATIVE ART. EVER-CONTINUOUSLY EVOLVING ONLINE</p> -->
+            </div>
+        </div>
+        <div class="smBox">
+            <a href="https://github.com/sunnisacoder" target="_blank"><img src="./github.png"></a>
+            <a href="https://www.cake.me/s--nhlzTMUkyVt4jZxloSzhNw--/funsunny1107" target="_blank"><img
+                    src="./resume.svg"></a>
+            <a href="https://www.instagram.com/fan_ching_?igsh=ajI0N3Nkcm5xbTg5&utm_source=qr" target="_blank"><img
+                    src="./ig.png"></a>
+        </div>
+        <div class="rightHeader">
+            <table>
+                <tr>
+                    <td><a id="about">ABOUT ME</a></td>
+                    <td><a id="works">WORKS</a></td>
+                    <td><a href="#">↗</a></td>
+                </tr>
+                <tr>
+                    <td><a href="https://sunnisacoder.github.io/havefan/" target="_blank"> To Have Fan ↗</a></td>
+                    <td><a href="https://sunnisacoder.github.io/havefan/onlineOrder.html" target="_blank">banTo Game
+                            ↗</a></td>
+                    <td><a href="#"> ↗</a></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div id="bannerArea">
+        <!-- spline iframe -->
+        <div class="wrap">
+            <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/TkxMRUeIF6s2dS4i/scene.splinecode"></spline-viewer> -->
+            <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/SoSKGse2nyrhZnPS/scene.splinecode"></spline-viewer> -->
+            <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.26/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/HtwxJAXVo89T2nX6/scene.splinecode"></spline-viewer> -->
+            <!-- <iframe src='https://my.spline.design/journeycopy-bf874501a45e4a7e87f1a2aec16e982a/' frameborder='0' width='100%' height='100%'></iframe> -->
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.26/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/KaBnFbOuV42ckso3/scene.splinecode"></spline-viewer>
+        </div>
+    </div>
+    <!-- cursor -->
+    <div class="cursor-dot"></div>
+    <!-- cursor -->
+
+</body>
+<script>
+    const cursorDot = document.querySelector('.cursor-dot');
+
+    document.addEventListener('mousemove', (e) => {
+        cursorDot.style.left = `${e.clientX}px`;
+        cursorDot.style.top = `${e.clientY}px`;
+    });
+
+    document.querySelectorAll('.nav-section').forEach(section => {
+        section.addEventListener('mouseover', () => {
+            section.style.fontWeight = 'bold';
+        });
+        section.addEventListener('mouseout', () => {
+            section.style.fontWeight = 'normal';
+        });
+    });
+</script>
+<script>
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+
+    const textArray = ["focusing on small things", "I tryna grow not succeed", "I am proud of what im doing", "I take on diffcult mission"];
+    const typingDelay = 200;
+    const erasingDelay = 100;
+    const newTextDelay = 2000; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        }
+        else {
+            cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        }
+        else {
+            cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay + 1100);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () { // On DOM Load initiate the effect
+        if (textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+</script>
+<script>
+    
+    function back() {
+        const bannerArea = document.getElementById('bannerArea');
+        bannerArea.innerHTML = `
+        <p>放我的作品</p>
+    `;
+    }
+
+    document.getElementById('back').addEventListener('click', back);
+
+</script>
+
+<script>
+    function works() {
+        const bannerArea = document.getElementById('bannerArea');
+        bannerArea.innerHTML = `
+        <p>放我的作品</p>
+    `;
+    }
+
+    document.getElementById('works').addEventListener('click', works);
+
+</script>
+<script>
+    function about() {
+        const bannerArea = document.getElementById('bannerArea');
+        bannerArea.innerHTML = `
+        <p>關於我</p>
+        <p>關於我</p>
+        <p>關於我</p>
+    `;
+    }
+
+    document.getElementById('about').addEventListener('click', about);
+
+</script>
+
+</html>
