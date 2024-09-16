@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./allReset.css">
+    <link rel="stylesheet" href="../allReset.css">
+    <link rel="stylesheet" href="../index.css">
     <title>sunnisacoder</title>
 </head>
 
 <body>
-    <div id="header">
+    <header>
         <div class="logoBox">
             <a id="logo">FAN</a>
         </div>
@@ -18,9 +18,14 @@
             <div class="quoteBox">
                 <p>the reason why I can do better than other is <span class="typed-text"></span><span
                         class="cursor">&nbsp;</span></p>
-                <!-- <p>GREW TO LOVE GENERATIVE ART. EVER-CONTINUOUSLY EVOLVING ONLINE</p> -->
+            </div>
+            <div class="hamburger">
+                <span class="bar-1"></span>
+                <span class="bar-2"></span>
+                <span class="bar-3"></span>
             </div>
         </div>
+
         <div class="smBox">
             <a href="https://github.com/sunnisacoder" target="_blank"><img src="./github.png"></a>
             <a href="https://www.cake.me/s--nhlzTMUkyVt4jZxloSzhNw--/funsunny1107" target="_blank"><img
@@ -28,35 +33,36 @@
             <a href="https://www.instagram.com/fan_ching_?igsh=ajI0N3Nkcm5xbTg5&utm_source=qr" target="_blank"><img
                     src="./ig.png"></a>
         </div>
-        <div class="rightHeader">
-            <table>
-                <tr>
-                    <td><a id="about">ABOUT ME</a></td>
-                    <td><a id="works">WORKS</a></td>
-                    <td><a href="#">↗</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://sunnisacoder.github.io/havefan/" target="_blank"> To Have Fan ↗</a></td>
-                    <td><a href="https://sunnisacoder.github.io/havefan/onlineOrder.html" target="_blank">banTo Game
-                            ↗</a></td>
-                    <td><a href="#"> ↗</a></td>
-                </tr>
-            </table>
+        <div class="nav_menu" id="nav-menu">
+            <ul>
+                <li><a id="about">ABOUT ME</a></li>
+                <li><a id="works">WORKS</a></li>
+                <li><a href="https://sunnisacoder.github.io/havefan/" target="_blank"> To Have Fan ↗</a></li>
+                <li><a href="https://sunnisacoder.github.io/havefan/onlineOrder.html" target="_blank">banTo Game↗</a>
+                </li>
+            </ul>
         </div>
+        <!-- 行動裝置 -->
+        <div class="mobileNav" id="mobileNav">
+            <ul>
+                <li><a id="about">ABOUT ME</a></li>
+                <li><a id="works">WORKS</a></li>
+                <li><a href="https://sunnisacoder.github.io/havefan/" target="_blank"> To Have Fan ↗</a></li>
+                <li><a href="https://sunnisacoder.github.io/havefan/onlineOrder.html" target="_blank">banTo Game↗</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 行動裝置 -->
+    </header>
+
 
     </div>
     <div id="bannerArea">
-        <!-- spline iframe -->
         <div class="wrap">
-            <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/TkxMRUeIF6s2dS4i/scene.splinecode"></spline-viewer> -->
-            <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/SoSKGse2nyrhZnPS/scene.splinecode"></spline-viewer> -->
+            <!-- spline iframe -->
             <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.26/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/HtwxJAXVo89T2nX6/scene.splinecode"></spline-viewer> -->
-            <!-- <iframe src='https://my.spline.design/journeycopy-bf874501a45e4a7e87f1a2aec16e982a/' frameborder='0' width='100%' height='100%'></iframe> -->
-            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.26/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/KaBnFbOuV42ckso3/scene.splinecode"></spline-viewer>
+            <spline-viewer url="https://prod.spline.design/KaBnFbOuV42ckso3/scene.splinecode"></spline-viewer> -->
+            <!-- spline iframe -->
         </div>
     </div>
     <!-- cursor -->
@@ -124,18 +130,6 @@
         if (textArray.length) setTimeout(type, newTextDelay + 250);
     });
 </script>
-<script>
-    
-    function back() {
-        const bannerArea = document.getElementById('bannerArea');
-        bannerArea.innerHTML = `
-        <p>放我的作品</p>
-    `;
-    }
-
-    document.getElementById('back').addEventListener('click', back);
-
-</script>
 
 <script>
     function works() {
@@ -162,4 +156,49 @@
 
 </script>
 
+<!-- 行動裝置版nav -->
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const mobileNav = document.querySelector(".mobileNav");
+
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("toggle"); //漢堡變叉叉
+        mobileNav.classList.toggle("mobileNav");
+    })
+    
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     const mobileNav = document.getElementById("mobileNav"),
+    //         navToggle = document.getElementById("nav-toggle"),
+    //         navClose = document.getElementById("nav-close");
+
+    //     if (navToggle) {
+    //         navToggle.addEventListener("click", () => {
+    //             mobileNav.classList.toggle("show-menu");
+    //             console.log("123")//success
+    //         });
+    //     }
+
+    //     if (navClose) {
+    //         navClose.addEventListener("click", () => {
+    //             navMenu.classList.remove("show-menu");
+    //         });
+    //     }
+    // });
+</script>
+<!-- 行動裝置版nav -->
+
 </html>
+
+<!-- <table>
+            <tr>
+                <td><a id="about">ABOUT ME</a></td>
+                <td><a id="works">WORKS</a></td>
+                <td><a href="#">↗</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://sunnisacoder.github.io/havefan/" target="_blank"> To Have Fan ↗</a></td>
+                <td><a href="https://sunnisacoder.github.io/havefan/onlineOrder.html" target="_blank">banTo Game
+                        ↗</a></td>
+                <td><a href="#"> ↗</a></td>
+            </tr>
+        </table> -->

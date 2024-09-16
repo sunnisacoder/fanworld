@@ -1,6 +1,12 @@
+@charset "UTF-8";
+* {
+  cursor: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
   background-color: #fff;
-  cursor: none;
 }
 
 h1 {
@@ -15,74 +21,198 @@ h1 {
   z-index: 2;
 }
 
-#header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header {
   margin: 20px 20px 0 20px;
-  border: 5px solid black;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 5px solid black;
+  background-color: #fff;
 }
-#header .logoBox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 21px;
-  background-color: white;
+header .logoBox {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100px;
   border-right: 5px solid black;
-  z-index: 2;
 }
-#header .logoBox a {
+header .logoBox a {
   font-size: 20px;
   font-weight: 700;
 }
-#header .smBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 17.5px 30px;
-  margin: 0;
+header .leftHeader {
   position: relative;
-  z-index: 1;
-  gap: 10px;
-  border-left: 1px solid black;
-}
-#header .smBox a {
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-left: 10px;
-  font-size: 1.5rem;
-}
-#header .smBox a img {
-  width: 20px;
-  background-color: #333;
-  padding: 3px;
-  border-radius: 10px;
-}
-#header .leftHeader {
-  z-index: -1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: calc(50% - 100px);
-  display: flex;
-  align-items: center;
 }
-#header .leftHeader .quoteBox p {
+header .leftHeader .quoteBox {
+  text-align: center;
+}
+header .leftHeader .quoteBox p {
   font-size: 1.2rem;
   font-weight: 500;
   color: #333;
 }
-#header .leftHeader .quoteBox p span.typed-text {
+header .leftHeader .quoteBox p span.typed-text {
   font-weight: 800;
   color: #dd7732;
 }
-#header .leftHeader .quoteBox p span.cursor {
+header .leftHeader .quoteBox p span.cursor {
   display: inline-block;
   background-color: #ccc;
   margin-left: 0.1rem;
   width: 3px;
-  animation: blink 1s infinite;
+  -webkit-animation: blink 1s infinite;
+          animation: blink 1s infinite;
 }
-#header .leftHeader .quoteBox p span.cursor.typing {
-  animation: none;
+header .leftHeader .quoteBox p span.cursor.typing {
+  -webkit-animation: none;
+          animation: none;
+}
+header .leftHeader .hamburger {
+  display: block;
+  position: absolute;
+  z-index: 9;
+  width: 1.8rem;
+  height: 1.3rem;
+  right: 5%;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+header .leftHeader .hamburger span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2px;
+  z-index: 9;
+  height: 3px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: black;
+}
+header .leftHeader .hamburger .bar-3 {
+  width: 80%;
+}
+@media (max-width: 1180px) {
+  header .leftHeader .hamburger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  header .leftHeader .hamburger:hover {
+    cursor: pointer; /*因為漢堡是div，游標盤旋在它上面不會變成手掌造型的pointer，所以要補上*/
+  }
+  header .leftHeader nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /*把標題跟連結改成直行排列*/
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding-top: 2rem;
+  }
+  header .leftHeader .navbar-links {
+    width: 100%; /*使連結與螢幕等寬*/
+  }
+  header .leftHeader .navbar-links ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /*讓連結各自直行排列*/
+    width: 100%;
+  }
+  header .leftHeader .navbar-links ul li {
+    width: 100%;
+  }
+  header .leftHeader .navbar-links li {
+    text-align: center;
+  }
+  header .leftHeader .navbar-links.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; /*看到JS你就懂這行了XD*/
+  }
+}
+header .leftHeader .hamburger span {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; /*要在原處加上這行，不然不會有過場*/
+}
+header .leftHeader .toggle .bar-1 {
+  -webkit-transform: rotate(-45deg) translate(-4.2px, 7px);
+          transform: rotate(-45deg) translate(-4.2px, 7px); /*旋轉平移變成叉叉*/
+}
+header .leftHeader .toggle .bar-2 {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg); /*消失*/
+}
+header .leftHeader .toggle .bar-3 {
+  -webkit-transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%);
+          transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%); /*也是旋轉平移變成叉叉，只是要伸到跟bar-1一樣長*/
+}
+header .leftHeader .navbar-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /*因為要滑入，所以顯示出來*/
+  position: absolute; /*要滑入就不待在原本的flexbox中了*/
+  top: 3.5rem; /*位在navbar下方*/
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in; /*滑出過場*/
+  -webkit-transform: translateY(-200%);
+          transform: translateY(-200%); /*預設位於視窗之外*/
+}
+header .leftHeader .navbar-links.active {
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in; /*滑入過場*/
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%); /*點擊時從上方滑到navbar下方*/
+}
+@-webkit-keyframes typingEffect {
+  0% {
+    background-color: #ccc;
+  }
+  49% {
+    background-color: #ccc;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: #ccc;
+  }
 }
 @keyframes typingEffect {
   0% {
@@ -101,68 +231,130 @@ h1 {
     background-color: #ccc;
   }
 }
-#header .rightHeader {
-  width: calc(50% - 90px);
+@media (max-width: 1180px) {
+  header .leftHeader .navToggle {
+    display: block;
+  }
+}
+header .smBox {
+  min-width: 150px;
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-left: 1px solid #000;
 }
-#header .rightHeader .line {
-  width: 3px;
-  height: 100%;
-  background-color: black;
-  position: absolute;
-  z-index: 2;
+header .smBox a {
+  margin: 0 7px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30px;
+  aspect-ratio: 1/1;
+  background-color: #333;
+  border-radius: 100%;
+  font-size: 25px;
 }
-#header .rightHeader table {
+header .smBox a:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+header .smBox a img {
+  display: block;
   width: 100%;
-  border-collapse: collapse;
 }
-#header .rightHeader table tr {
+header .nav_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+  border-left: 1px solid #000;
+}
+header .nav_menu ul {
+  margin: -1px 0;
+  margin-right: -1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  font-weight: 800;
+  border-bottom: 1px solid #000;
+  font-weight: 700;
 }
-#header .rightHeader table tr:nth-last-child(1) {
-  border-bottom: 0;
+header .nav_menu ul li {
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  width: 50%;
 }
-#header .rightHeader table td {
-  padding: 7px;
-  border-right: 1px solid black;
+header .nav_menu ul li a {
+  display: block;
+  padding: 10px 8px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
-#header .rightHeader table td:nth-child(3) {
-  border-right: 0;
-}
-#header .rightHeader table td:hover {
-  background-color: black;
-  transition: 0.3s;
-  animation-name: colorSlide;
-}
-#header .rightHeader table td:hover a {
+header .nav_menu ul li a:hover {
+  background-color: #000;
   color: #fff;
 }
-@keyframes colorSlide {
-  0% {
-    transform: translateX(0%);
-    background-color: firebrick;
-  }
-  50% {
-    transform: translateX(100%);
-    background-color: gold;
-  }
-}
 @media (max-width: 1180px) {
-  #header .smBox,
-  #header .rightHeader {
+  header .smBox,
+  header .nav_menu {
     display: none;
   }
-  #header .logoBox {
+  header .logoBox {
     border-bottom: 5px solid black;
+    margin-bottom: -5px;
   }
-  #header .leftHeader {
+  header .leftHeader {
     width: 100%;
+  }
+}
+header .mobileNav {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 65px;
+  width: 50vw;
+  height: 100%;
+  -webkit-transition: right 0.3s ease;
+  transition: right 0.3s ease;
+}
+header .mobileNav ul {
+  list-style: none;
+  padding: 0;
+  background-color: #ccc;
+}
+header .mobileNav ul li {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+header .mobileNav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
+@media (max-width: 1180px) {
+  header .mobileNav {
+    display: block;
+  }
+  header .mobileNav .show-menu {
+    right: 0;
   }
 }
 
@@ -171,10 +363,11 @@ h1 {
   margin: 0 20px 0px 20px;
   border: 5px solid black;
   border-top: 0;
+  overflow-y: auto;
 }
 #bannerArea .wrap {
-  height: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .cursor-dot {
@@ -185,9 +378,13 @@ h1 {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
   transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
 }
 
 .cursor-dot.hovered {
-  transform: scale(1.5);
-}/*# sourceMappingURL=index.css.map */
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
