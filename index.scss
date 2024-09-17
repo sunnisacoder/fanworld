@@ -23,8 +23,6 @@ header {
     margin: 20px 20px 0 20px;
     position: relative;
     display: flex;
-    // justify-content: space-between;
-    // align-items: center;
     border: 5px solid black;
     background-color: #fff;
 
@@ -43,7 +41,6 @@ header {
     }
 
     .leftHeader {
-        position: relative;
         padding: 0 20px;
         display: flex;
         justify-content: center;
@@ -87,6 +84,7 @@ header {
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-end;
+
             span {
                 display: flex;
                 gap: 2px;
@@ -95,7 +93,9 @@ header {
                 width: 100%;
                 border-radius: 20px;
                 background-color: black;
+                transition: all 0.3s ease; 
             }
+            
             .bar-3 {
                 width: 80%;
             }
@@ -103,7 +103,7 @@ header {
         // hamburger
         @media (max-width: 1180px) {
             .hamburger {
-                display: flex; 
+                display: flex;
             }
             .hamburger:hover {
                 cursor: pointer; /*因為漢堡是div，游標盤旋在它上面不會變成手掌造型的pointer，所以要補上*/
@@ -113,37 +113,18 @@ header {
                 align-items: flex-start;
                 padding-top: 2rem;
             }
-            .navbar-links {
-                width: 100%; /*使連結與螢幕等寬*/
-            }
-            .navbar-links ul{
-                flex-direction: column; /*讓連結各自直行排列*/
-                width: 100%;
-            }
-            .navbar-links ul li{
-                width: 100%;
-            }
-            .navbar-links li {
-                text-align: center;
-            }
-            .navbar-links.active {
-                display: flex; /*看到JS你就懂這行了XD*/
-            }
         }
-        .hamburger span {
-            transition: all 0.3s ease; /*要在原處加上這行，不然不會有過場*/
-        }
-        
-        .toggle .bar-1 {
-            transform: rotate(-45deg) translate(-4.2px, 7px); /*旋轉平移變成叉叉*/
-        }
-        
-        .toggle .bar-2 {
-            transform: rotateX(90deg); /*消失*/
-        }
-        
-        .toggle .bar-3 {
-            transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%); /*也是旋轉平移變成叉叉，只是要伸到跟bar-1一樣長*/
+
+        .toggle {
+            .bar-1 {
+                transform: rotate(-45deg) translate(-4.2px, 7px); /*旋轉平移變成叉叉*/
+            }
+            .bar-2 {
+                transform: rotateX(90deg); /*消失*/
+            }
+            .bar-3 {
+                transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%); /*也是旋轉平移變成叉叉，只是要伸到跟bar-1一樣長*/
+            }
         }
         .navbar-links {
             display: flex; /*因為要滑入，所以顯示出來*/
@@ -176,14 +157,6 @@ header {
         }
     }
 
-    @media (max-width: 1180px) {
-        .leftHeader {
-            .navToggle {
-                display: block;
-            }
-        }
-    }
-
     .smBox {
         min-width: 150px;
         width: 10%;
@@ -202,11 +175,6 @@ header {
             background-color: #333;
             border-radius: 100%;
             font-size: 25px;
-
-            &:hover {
-                transform: translateY(-2px);
-                transition: 0.4s;
-            }
 
             img {
                 display: block;
@@ -306,7 +274,6 @@ header {
             flex-wrap: wrap;
             width: 100%;
             border-bottom: 1px solid #000;
-            font-weight: 700;
 
             li {
                 border-top: 1px solid #000;
@@ -342,46 +309,42 @@ header {
             width: 100%;
         }
     }
-    
+
     .mobileNav {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 65px;
         width: 50vw;
-        height: 100%;
-        transition: right 0.3s ease;
-        
+        opacity: 0;
+        position: absolute;
+        z-index: 99;
+        right: -100px;
+        top: 64px;
+        transition:right 0.3s ease;
+
         ul {
             list-style: none;
             padding: 0;
-            background-color: #ccc;
+            background-color: black;
             li {
                 padding: 20px;
                 border-bottom: 1px solid #ddd;
                 a {
                     text-decoration: none;
-                    color: #000;
+                    color: white;
                     font-size: 18px;
+                    font-weight: 700;
                 }
             }
         }
     }
-
     @media (max-width: 1180px) {
-        .mobileNav {
-            display: block;
-
-            .show-menu {
-                right: 0;
-            }
+        .show {
+            opacity: 1;
+            right: 0;
         }
     }
 }
 
 #bannerArea {
     height: 82vh;
-    // overflow-y: hidden;
     margin: 0 20px 0px 20px;
     border: 5px solid black;
     border-top: 0;
