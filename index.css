@@ -29,6 +29,7 @@ header {
   display: flex;
   border: 5px solid black;
   background-color: #fff;
+  overflow-x: clip;
 }
 header .logoBox {
   padding: 20px;
@@ -142,36 +143,15 @@ header .leftHeader .hamburger .bar-3 {
 }
 header .leftHeader .toggle .bar-1 {
   -webkit-transform: rotate(-45deg) translate(-4.2px, 7px);
-          transform: rotate(-45deg) translate(-4.2px, 7px); /*旋轉平移變成叉叉*/
+          transform: rotate(-45deg) translate(-4.2px, 7px); /*變成叉叉*/
 }
 header .leftHeader .toggle .bar-2 {
   -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg); /*消失*/
+          transform: rotateX(90deg);
 }
 header .leftHeader .toggle .bar-3 {
   -webkit-transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%);
-          transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%); /*也是旋轉平移變成叉叉，只是要伸到跟bar-1一樣長*/
-}
-header .leftHeader .navbar-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; /*因為要滑入，所以顯示出來*/
-  position: absolute; /*要滑入就不待在原本的flexbox中了*/
-  top: 3.5rem; /*位在navbar下方*/
-  -webkit-transition: -webkit-transform 0.5s ease-in;
-  transition: -webkit-transform 0.5s ease-in;
-  transition: transform 0.5s ease-in;
-  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in; /*滑出過場*/
-  -webkit-transform: translateY(-200%);
-          transform: translateY(-200%); /*預設位於視窗之外*/
-}
-header .leftHeader .navbar-links.active {
-  -webkit-transition: -webkit-transform 0.5s ease-in;
-  transition: -webkit-transform 0.5s ease-in;
-  transition: transform 0.5s ease-in;
-  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in; /*滑入過場*/
-  -webkit-transform: translateY(0%);
-          transform: translateY(0%); /*點擊時從上方滑到navbar下方*/
+          transform: rotate(405deg) translate(-7.4px, -7px) scaleX(125%);
 }
 @-webkit-keyframes typingEffect {
   0% {
@@ -290,14 +270,17 @@ header .nav_menu ul li a:hover {
   }
 }
 header .mobileNav {
-  width: 50vw;
+  max-width: 480px;
+  width: 100%;
   opacity: 0;
   position: absolute;
   z-index: 99;
-  right: -100px;
-  top: 64px;
-  -webkit-transition: right 0.3s ease;
-  transition: right 0.3s ease;
+  right: 0;
+  top: 100%;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
 }
 header .mobileNav ul {
   list-style: none;
@@ -318,19 +301,23 @@ header .mobileNav ul li a {
   header .show {
     opacity: 1;
     right: 0;
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
   }
 }
 
-#bannerArea {
+.mainArea {
+  position: relative;
   height: 82vh;
   margin: 0 20px 0px 20px;
   border: 5px solid black;
   border-top: 0;
-  overflow-y: auto;
+  overflow: hidden;
 }
-#bannerArea .wrap {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+
+.shared {
+  height: 100%;
+  overflow-y: auto;
 }
 
 .cursor-dot {
@@ -350,4 +337,16 @@ header .mobileNav ul li a {
 .cursor-dot.hovered {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+}
+
+.hide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
